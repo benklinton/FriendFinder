@@ -1,0 +1,27 @@
+.header {
+    text-align: center;
+    font-size: 60px;
+}
+
+.subtext {
+    font-size: xx-large;
+    margin-left: 25px;
+}
+
+#jumbo {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+#survey {
+    padding: 15px;
+    margin-left: 25px;
+}
+
+hr {
+    margin-left: 25px;
+}
+
+.link {
+    margin-left: 100px;
+}
