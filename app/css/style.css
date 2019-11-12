@@ -1,3 +1,6 @@
+body {
+    background: url("triangle-mosaic.png")
+}
 .header {
     text-align: center;
     font-size: 60px;
@@ -24,4 +27,47 @@ hr {
 
 .link {
     margin-left: 100px;
+}
+
+.body2 {
+    background: url("greek-vase.png");
+}
+
+.about {
+    margin-left: 25px;
+    margin-bottom: 15px;
+    margin-top: 25px;
+}
+
+#name {
+    margin-left: 25px;
+    width: 1000px;
+    font-size: large;
+}
+
+#photo-link {
+    margin-left: 25px;
+    width: 1000px;
+    font-size: large;
+}
+
+.QuestHeader {
+    margin-left: 25px;
+}
+
+.question {
+    margin-left: 25px;
+}
+
+.answer {
+    margin-left: 25px;
+}
+
+#submit {
+    margin-left: 25px;
+    width: 13%;
+}
+
+#link {
+    margin-left: 25px;
 }
