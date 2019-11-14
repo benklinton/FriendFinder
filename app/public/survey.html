@@ -6,6 +6,7 @@
         </title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="..//css/style.css">
+        <script src="https://code.jquery.com/jquery.js"></script>
     </head>
     <body class="body2">
         <h1 class="header">
@@ -19,11 +20,11 @@
                 <div class="form-group">
                   <label for="name" id="name">Name (Required)</label>
 
-                  <input type="text" class="form-control" id="name" aria-describedby="name">
+                  <input type="text" class="form-control" id="name-input" aria-describedby="name">
                 </div>
                 <div class="form-group">
                   <label for="photo-link" id="photo-link">Photo Link</label>
-                  <input type="text" class="form-control" id="photo-link">
+                  <input type="text" class="form-control" id="photo-input">
                 </div>
               </form>
               <br>
@@ -46,7 +47,7 @@
               <h3 class="QuestHeader">Question 2</h3>
               <label class="question">You do not blindly follow the leadership of other</label>
               <br>
-              <select id = "Q1" class="answer">
+              <select id = "Q2" class="answer">
                 <option value = "1">1 (Strongly Disagree)</option>
                 <option value = "2">2</option>
                 <option value = "3">3</option>
@@ -61,7 +62,7 @@
               <h3 class="QuestHeader">Question 3</h3>
               <label class="question">You are an independent thinker</label>
               <br>
-              <select id = "Q1" class="answer">
+              <select id = "Q3" class="answer">
                 <option value = "1">1 (Strongly Disagree)</option>
                 <option value = "2">2</option>
                 <option value = "3">3</option>
@@ -76,7 +77,7 @@
               <h3 class="QuestHeader">Question 4</h3>
               <label class="question">Material wealth means a lot to you</label>
               <br>
-              <select id = "Q1" class="answer">
+              <select id = "Q4" class="answer">
                 <option value = "1">1 (Strongly Disagree)</option>
                 <option value = "2">2</option>
                 <option value = "3">3</option>
@@ -91,7 +92,7 @@
               <h3 class="QuestHeader">Question 5</h3>
               <label class="question">You have high expectations for your fellow employess</label>
               <br>
-              <select id = "Q1" class="answer">
+              <select id = "Q5" class="answer">
                 <option value = "1">1 (Strongly Disagree)</option>
                 <option value = "2">2</option>
                 <option value = "3">3</option>
@@ -106,7 +107,7 @@
               <h3 class="QuestHeader">Question 6 </h3>
               <label class="question">You are a natural leader</label>
               <br>
-              <select id = "Q1" class="answer">
+              <select id = "Q6" class="answer">
                 <option value = "1">1 (Strongly Disagree)</option>
                 <option value = "2">2</option>
                 <option value = "3">3</option>
@@ -121,7 +122,7 @@
               <h3 class="QuestHeader">Question 7 </h3>
               <label class="question">You are quick to anger in certain situations</label>
               <br>
-              <select id = "Q1" class="answer">
+              <select id = "Q7" class="answer">
                 <option value = "1">1 (Strongly Disagree)</option>
                 <option value = "2">2</option>
                 <option value = "3">3</option>
@@ -137,7 +138,7 @@
               <h3 class="QuestHeader">Question 8 </h3>
               <label class="question">Future success in your life means a lot to you</label>
               <br>
-              <select id = "Q1" class="answer">
+              <select id = "Q8" class="answer">
                 <option value = "1">1 (Strongly Disagree)</option>
                 <option value = "2">2</option>
                 <option value = "3">3</option>
@@ -152,7 +153,7 @@
               <h3 class="QuestHeader">Question 9 </h3>
               <label class="question">Future success in your life means a lot to you</label>
               <br>
-              <select id = "Q1" class="answer">
+              <select id = "Q9" class="answer">
                 <option value = "1">1 (Strongly Disagree)</option>
                 <option value = "2">2</option>
                 <option value = "3">3</option>
@@ -167,7 +168,7 @@
               <h3 class="QuestHeader">Question 10 </h3>
               <label class="question">Frienship comes easy to you</label>
               <br>
-              <select id = "Q1" class="answer">
+              <select id = "Q10" class="answer">
                 <option value = "1">1 (Strongly Disagree)</option>
                 <option value = "2">2</option>
                 <option value = "3">3</option>
@@ -182,4 +183,50 @@
               <br>
               <a id="link" href="/">API Friend List</a> | <a href="/">Github Repo</a>
     </body>
+    <script type="text/javascript">
+        $("#submit").click(function(){
+          event.preventDefault();
+          var name = $("#name-input").val().trim();
+          var photoLink = $("#photo-input").val().trim();
+          var Q1 = $("#Q1").val().trim();
+          var Q2 = $("#Q2").val().trim();
+          var Q3 = $("#Q3").val().trim();
+          var Q4 = $("#Q4").val().trim();
+          var Q5 = $("#Q5").val().trim();
+          var Q6 = $("#Q6").val().trim();
+          var Q7 = $("#Q7").val().trim();
+          var Q8 = $("#Q8").val().trim(); 
+          var Q9 = $("#Q9").val().trim();
+          var Q10 = $("#Q10").val().trim();
+                 
+          var userData = {
+            "name": name,
+            "photo": photoLink,
+            "scores": []
+          }
+          userData.scores.push(Q1)
+          userData.scores.push(Q2)
+          userData.scores.push(Q3)
+          userData.scores.push(Q4)
+          userData.scores.push(Q5)
+          userData.scores.push(Q6)
+          userData.scores.push(Q7)
+          userData.scores.push(Q8)
+          userData.scores.push(Q9)
+          userData.scores.push(Q10)
+          console.log(userData)
+
+          $.post("/api/friends", userData,
+          function(data){
+            if(data) {
+              alert("data sent")
+            }
+            else {
+              alert("data failed")
+            }
+          });
+        });
+      //   $.ajax({ url: "/api/tables", method: "GET" })
+      // .then(function(tableDat
+    </script>
 </html>
